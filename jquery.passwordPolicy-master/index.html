@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<meta charset=utf-8 />
+<title>PasswordPolicy</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<div class="wrapper">
+  <h1>Try your password<h1>
+  <input type="password">
+  <ul class="output"></ul>
+  <small>A little <a href="//phuu.github.com/jquery.passwordPolicy/">password tool</a> by <a href="//github.com/phuu">phuu</a>.</small>
+</div>
+
+<a href="https://github.com/phuu/jquery.passwordPolicy/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="jquery.passwordPolicy.js"></script>
+<script>
+  /**
+   * Some example usage of jquery.passwordPolicy
+   */
+  var badPasswords = [
+    'password', '1234', '12345', '12345', '123456', '12345678',
+    'qwerty', 'qwertyuiop', 'asdfghjkl', 'zxcvbnm', '!@£$%^&*()'
+  ];
+  var tests = [
+    {
+      name: 'Size Matters',
+      description: 'Is the password longer than 11 characters?',
+      cb: function (val) {
+        return (val.length > 11 ? true : false);
+      }
+    },
+    {
+      name: 'Groundhog',
+      description: 'Does the password contain repeated characters (2 or more times)?',
+      cb: function (val) {
+        return (val.match(/(\w)\1{2,}/gi) ? false : true);
+      }
+    },
+    {
+      name: 'Homogeneity',
+      description: 'Is the password all the same kind of characters?',
+      cb: function (val) {
+        return (val.match(/^([a-z]+|[A-Z]+|[0-9]+)$/g) ? false : true);
+      }
+    },
+    {
+      name: 'Entropic',
+      description: 'Might this password hard for you to remember?',
+      cb: function (val) {
+        return (val.match(/(\w\W)\1+/gi) ? false : true);
+      }
+    },
+    {
+      name: 'Dictionable',
+      description: 'Is the password horrendously obvious?',
+      cb: function (val) {
+        return (badPasswords.indexOf(val) > -1 ? false : true);
+      }
+    },
+    {
+      name: 'Predictable',
+      description: 'Does the password contain something horrendously obvious?',
+      cb: function (val) {
+        var i = 0, l = badPasswords.length;
+        for( ; i < l; i++ ) {
+          if( val.indexOf(badPasswords[i]) > -1 ) { return false; }
+        }
+        return true;
+      }
+    }
+  ];
+  // Validate the password field
+  $('input[type="password"]').passwordPolicy({
+    tests: tests
+  });
+</script>

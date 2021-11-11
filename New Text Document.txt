@@ -1,0 +1,2 @@
+https://github.com/search?q=jquery+password+strength&type=Repositories
+https://regex101.com/

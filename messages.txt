@@ -1,0 +1,13 @@
+SQL.Add('select dbo.PasswordStrength_fn(' + QuotedStr(Encrypt(NewPwdMaskEdit.Text, s_EncryptKey)) + ') as strength');
+
+        open;
+
+        case FieldByName('strength').AsInteger of
+          0..24: LabelTotalDescription.Caption:= 'Very Weak';//'Πολύ αδύναμος';
+          25..49: LabelTotalDescription.Caption:= 'Weak';//'Αδύναμος';
+          50..59: LabelTotalDescription.Caption:= 'Good';//'Μέτριος';
+          60..69: LabelTotalDescription.Caption:= 'Strong';//'Ισχυρός';
+          70..79: LabelTotalDescription.Caption:= 'Very Strong';//'Πολύ ισχυρός';
+          80..89: LabelTotalDescription.Caption:= 'Secure';//'Ασφαλής';
+          90..999: LabelTotalDescription.Caption:= 'Very Secure';//'Πολύ ασφαλής';
+        end;

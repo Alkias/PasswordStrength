@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Test</title>
+  <link rel="stylesheet" href="css/style1.css">
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="jquery.password.check.js"></script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1>Try your password</h1>
+    <input type="text">
+    <ul class="output"></ul>
+  </div>
+  <script>
+    /**
+     * Some example usage of jquery.passwordPolicy
+     */
+    var badPasswords = [
+      'password', '1234', '12345', '12345', '123456', '12345678',
+      'qwerty', 'qwertyuiop', 'asdfghjkl', 'zxcvbnm', '!@£$%^&*()'
+    ];
+    var tests = [
+      {
+        name: 'Size Matters',
+        description: 'Is the password longer than 11 characters?',
+        cb: function (val) {
+          return (val.length > 11 ? true : false);
+        }
+      },
+      {
+      name: 'Homogeneity',
+      description: 'Ο Κωδικός πρέπει να περιέχει πεζά και κεφαλαία',
+      cb: function (val) {
+        var test = (val.match(/^(([a-zα-ωά-ώ]+)([A-ZΑ-ΩΆ-Ώ]+))|(([A-ZΑ-ΩΆ-Ώ]+)([a-zα-ωά-ώ]+))$/g) ? true : false);
+        return test;
+      }
+    },
+    ];
+    // Validate the password field
+    $('input[type="text"]').passwordPolicy({
+      tests: tests
+    });
+  </script>
+</body>
+
+</html>
