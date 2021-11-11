@@ -22,6 +22,7 @@
     var resetCallback = function (ev) {
       $("#strength-bar").css({ width: "0%" });
       $("#progress-bar-index").text("0%");
+      $("#progress-bar-messges").text("");
     };
 
     // Callback to passed the output of the testCb
@@ -44,9 +45,24 @@
       totalProgress = totalProgress.toFixed(0);
       //console.log("totalProgressFixed: " + totalProgress);
 
-      $("#strength-bar").css({ width: totalProgress + "%" });
-      $("#progress-bar-index").text(totalProgress + "%");
+      /* $("#strength-bar").css({ width: totalProgress + "%" });
+      $("#progress-bar-index").text(totalProgress + "%"); */
+
+      $("#progress-bar-messges").text(messages(strengthResult));
+      $("#progress-bar-messges").css({"background-color":"red"});
     };
+
+    function messages(val){
+      var m = "";
+      if(val<=24) m = "Very Weak";
+      if(val>=25 && val <=49) m = "Weak";
+      if(val >=50 && val <=59) m="Good";
+      if(val >=60 && val <=69) m="Strong";
+      if(val >=70 && val<=79) m="Very Strong";
+      if(val>=80 && val<=89) m="Secure";
+      if(val>=90) m="Very Secure";
+      return m;
+    }
 
     // Default plugin configuration
     // outside the userConfig
