@@ -53,7 +53,8 @@
      Plugin.pluginName = "pluginName";
  
      /**
-      * The name of the plugin cache, the plugin is cached in the dom structure through the data method, and the name of the stored data
+      * The name of the plugin cache, the plugin is cached in the dom structure 
+      * through the data method, and the name of the stored data
       * @type {string}
       */
      Plugin.dataName = "pluginDataName";

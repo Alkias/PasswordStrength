@@ -94,8 +94,9 @@
                                     Welcome to the future
                                 </p>
                                 <p class="font-size-lg font-w600 text-white-75 mb-0">
-                                    Copyright &copy; <span class="js-year-copy">2018</span>
+                                    Copyright &copy; <span class="js-year-copy" >2018</span>
                                 </p>
+                                <div class="api font-size-lg font-w600 text-white-75 mb-0" data-walkthrough="Αρνάκι άσπρο και παχύ">API</div>
                             </div>
                         </div>
                         <!-- END Meta Info Section -->
@@ -117,18 +118,10 @@
 
         <!-- Page JS Code -->
         <!-- <script src="assets/js/pages/op_auth_signin.min.js"></script> -->
-        <script src="jquery.test.plugin.js"></script>
-        <script src="tests.js"></script>
+        <script src="jquery.plugin.template.4.js"></script>
         <script>
-            
-
-            $('#kati').mitsos({
-            rules: {
-                    kati: {
-                        required: true
-                    }
-                }
-            });
+           // $('.api').Walkthrough();
+           $('.api').walkthrough('restore');
         </script>
     </body>
 </html>
