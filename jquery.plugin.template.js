@@ -6,7 +6,7 @@
  * Requires: JQUERY_VERSION, OTHER_PLUGIN(S), ETC.
  * Author: AUTHOR (AUTHOR_URL)
  * Copyright: Copyright 2013 YOUR_NAME
- * License: LICENSE_INFO
+ * License: LICENSE_INFO MIt
  */
 
 // Plugin closure wrapper
